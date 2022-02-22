@@ -123,3 +123,37 @@ resultAvgFirstTeam = calcAverage(85, 54, 41);
 resultAvgSecondTeam = calcAverage(23, 34, 27);
 console.log(resultAvgFirstTeam, resultAvgSecondTeam);
 console.log(checkWinner(resultAvgFirstTeam, resultAvgSecondTeam));
+
+//ARRAYS
+const friends = [`Micheal`, `Steven`, `Peter`];
+console.log(friends);
+//another way of creating an array
+// const years = new Array(1991, 1987, 1789, 2009);
+
+console.log(friends[0]);
+console.log(friends[2]);
+
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+friends[2] = "jay";
+console.log(friends);
+
+// Exercise
+const calcAged = function (birthYear) {
+  return 2037 - birthYear;
+};
+
+const years = [1991, 1987, 1789, 2009, 2018];
+
+const age1 = calcAged(years[0]);
+const age2 = calcAged(years[1]);
+const age3 = calcAged(years[years.length - 1]);
+console.log(age1, age2, age3);
+
+const ages = [
+  calcAged(years[0]),
+  calcAged(years[1]),
+  calcAged(years[years.length - 1]),
+];
+console.log(ages);
