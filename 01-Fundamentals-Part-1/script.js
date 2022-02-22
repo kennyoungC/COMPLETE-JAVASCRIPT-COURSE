@@ -78,14 +78,14 @@ are
 very
 beautiful`);
 
-const age = 15;
+// const age = 15;
 
-if (age >= 18) {
-  console.log(`Sarah can start driving license 🚗`);
-} else {
-  const yearsLeft = 18 - age;
-  console.log(`Sarah is too young, wait another ${yearsLeft} years :)`);
-}
+// if (age >= 18) {
+//   console.log(`Sarah can start driving license 🚗`);
+// } else {
+//   const yearsLeft = 18 - age;
+//   console.log(`Sarah is too young, wait another ${yearsLeft} years :)`);
+// }
 
 const birthDate = 1991;
 let century;
@@ -139,19 +139,109 @@ Test data:
 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106*/
 
 const dolphinsAvg = (97 + 112 + 101) / 3;
-console.log(dolphinsAvg);
 const koalasAvg = (109 + 95 + 123) / 3;
-console.log(koalasAvg);
-if (dolphinsAvg > koalasAvg && dolphinsAvg > 100) {
+console.log(dolphinsAvg, koalasAvg);
+if (dolphinsAvg > koalasAvg && dolphinsAvg >= 100) {
   console.log(
     `the dolphins are the winner of this competition with an average of ${dolphinsAvg}`
   );
-} else if (koalasAvg > dolphinsAvg && koalasAvg > 100) {
+} else if (koalasAvg > dolphinsAvg && koalasAvg >= 100) {
   console.log(
     `the koalas are the winner of this competition with an average of ${koalasAvg}`
   );
-} else if (koalasAvg === dolphinsAvg) {
+} else if (
+  koalasAvg === dolphinsAvg &&
+  koalasAvg >= 100 &&
+  dolphinsAvg >= 100
+) {
   console.log(`the match is a draw`);
 } else {
   console.log(`we have no winners`);
 }
+
+// SWITCH CASE
+const day = "tuesday";
+
+switch (day) {
+  case "monday":
+    console.log(`Plan course structure`);
+    console.log(`Go to coding meetup`);
+    break;
+  case "tuesday":
+    console.log(`Prepare theory videos`);
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log(`Write code examples`);
+    break;
+  case "friday":
+    console.log(`Record videos`);
+    break;
+  case "saturday":
+  case "sunday":
+    console.log(`Enjoy your weekend :D`);
+  default:
+    console.log(`Not a valid day!`);
+}
+if (day === "monday") {
+  console.log(`Plan course structure`);
+  console.log(`Go to coding meetup`);
+} else if (day === "tuesday") {
+  console.log(`Prepare theory videos`);
+} else if (day === `wednesday` || day === `thursday`) {
+  console.log(`Write code examples`);
+} else if (day === `friday`) {
+  console.log(`Record videos`);
+} else if (day === saturday || day === "sunday") {
+  console.log(`Enjoy your weekend :D`);
+} else {
+  console.log(`Not a valid day!`);
+}
+
+// TERNARY OPERATORS
+const age = 29;
+// age >= 30 ? console.log(`I like to drink wine 🍷`) : console.log(`I love to drink water 💧 `);
+
+const drink = age >= 30 ? `wine 🍷` : `water 💧`;
+console.log(drink);
+
+let drink2;
+if (age >= 30) {
+  drink2 = `wine 🍷`;
+} else {
+  drink2 = `water 💧`;
+}
+console.log(drink2);
+// TERNARY OPERATORS can be used in a template literal
+console.log(`i like to drink ${age >= 30 ? `wine 🍷` : `water 💧`}`);
+// Coding Challenge #4
+/*
+Steven wants to build a very simple tip calculator for whenever he goes eating in a
+restaurant. In his country, it's usual to tip 15% if the bill value is between 50 and
+300. If the value is different, the tip is 20%.
+Your tasks:
+1. Calculate the tip, depending on the bill value. Create a variable called 'tip' for
+this. It's not allowed to use an if/else statement � (If it's easier for you, you can
+start with an if/else statement, and then try to convert it to a ternary
+operator!)
+2. Print a string to the console containing the bill value, the tip, and the final value
+(bill + tip). Example: “The bill was 275, the tip was 41.25, and the total value
+316.25”
+Test data:
+§ Data 1: Test for bill values 275, 40 and 430
+Hints:
+§ To calculate 20% of a value, simply multiply it by 20/100 = 0.2
+§ Value X is between 50 and 300, if it's >= 50 && <= 300 �
+GOOD LUCK �*/
+let bill = 275;
+// if (bill >= 50 && bill <= 300) {
+//   tip = bill * 0.15;
+// } else {
+//   tip = bill * 0.2;
+// }
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value is ${
+    bill + tip
+  }`
+);
