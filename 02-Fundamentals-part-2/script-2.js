@@ -230,3 +230,112 @@ const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 console.log(tips, bills);
 const total = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
 console.log(total);
+function writeLine() {
+  console.log(`---------------------------`);
+}
+// OBJECTS
+const myProfile = {
+  firstName: `Kenneth`,
+  lastName: `Obi`,
+  job: `Student`,
+  friends: [`silas`, `favour`, `tanto`],
+  birthYear: 1997,
+  hasDriverLicense: false,
+
+  // calcAge: function () {
+  //   return 2037 - this.birthYear;
+  // },
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+  //mini challenge
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year ${this.job} and has ${
+      this.hasDriverLicense ? `a` : `no`
+    } driver's license`;
+  },
+};
+console.log(myProfile.getSummary());
+console.log(writeLine());
+// adding functions inside an object
+console.log(myProfile.calcAge());
+console.log(myProfile.age);
+
+console.log(writeLine());
+console.log(myProfile.lastName);
+console.log(myProfile[`lastName`]);
+
+const nameKey = `Name`;
+console.log(myProfile[`first` + nameKey]);
+console.log(myProfile[`second` + nameKey]);
+
+// const interestedIn = prompt(
+//   `what do you want to know about jonas? Choose between firstName, lastName, age, job and friends`
+// );
+// if (myProfile[interestedIn]) {
+//   console.log(myProfile[interestedIn]);
+// } else {
+//   console.log(
+//     `Wrong request! Choose between firstName, lastName, age, job and friends `
+//   );
+// }
+
+myProfile.location = `lithuania`;
+myProfile[`email`] = `obikenneth913@gmail`;
+console.log(myProfile);
+
+//mini challenge
+console.log(
+  `${myProfile.lastName} have ${
+    myProfile[`friends`].length
+  } friends, and his best friend is called ${myProfile.friends[1]}`
+);
+//Coding Challenge #3
+/*
+Let's go back to Mark and John comparing their BMIs! This time, let's use objects to
+implement the calculations! Remember: BMI = mass / height ** 2 = mass
+/ (height * height) (mass in kg and height in meter)
+Your tasks:
+1. For each of them, create an object with properties for their full name, mass, and
+height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same
+method on both objects). Store the BMI value to a property, and also return it
+from the method
+3. Log to the console who has the higher BMI, together with the full name and the
+respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
+tall.
+GOOD LUCK �*/
+const markProfile = {
+  fullName: `Miller Mark`,
+  Mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.Bmi = this.Mass / this.height ** 2;
+    return this.Bmi;
+  },
+};
+const johnProfile = {
+  fullName: ` John Smith`,
+  Mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.Bmi = this.Mass / this.height ** 2;
+    return this.Bmi;
+  },
+};
+markProfile.calcBMI();
+johnProfile.calcBMI();
+console.log(johnProfile.fullName);
+console.log(markProfile.Bmi, markProfile.Bmi);
+if (markProfile.Bmi > johnProfile.Bmi) {
+  console.log(
+    `${markProfile.fullName}'s BMI (${markProfile.Bmi}) is higher than ${johnProfile.fullName}'s BMI ${johnProfile.Bmi}`
+  );
+} else {
+  console.log(
+    `${johnProfile.fullName}'s BMI (${johnProfile.Bmi}) is higher than ${markProfile.fullName} BMI (${johnProfile.Bmi})`
+  );
+}
