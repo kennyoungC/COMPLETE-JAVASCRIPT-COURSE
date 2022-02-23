@@ -445,6 +445,7 @@ GOOD LUCK �*/
 //   bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 
 const bill = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+console.log(bill);
 const tipss = [];
 const totals = [];
 for (let i = 0; i < bill.length; i++) {
@@ -453,7 +454,6 @@ for (let i = 0; i < bill.length; i++) {
   let t = bill[i] + tip;
   totals.push(t);
 }
-console.log(bill);
 console.log(`tips array: ${tipss}`);
 console.log(`total array: ${totals}`);
 const myArr = [5, 10, 15, 10];
@@ -467,3 +467,29 @@ const calcAveraged = function (arr) {
   return avg;
 };
 console.log(calcAveraged(totals));
+
+const city_info = {
+  Kaunas: {
+    location: "Lithuania",
+    population: "289380",
+    visitPlaces: [
+      "Raudondvaris castle",
+      "Juniper Valley",
+      "The Zoo",
+      "Pažaislis Monastery",
+    ],
+  },
+  Vilnius: {
+    location: "Lithuania",
+    population: "400380",
+    visitPlaces: ["Traki castle", "KFC", "Old Town"],
+  },
+};
+
+// for (let i = 0; i < city_info.length; i++) {
+console.log(`kaunas is in ${city_info.Kaunas.location}`);
+console.log(`the population is ${city_info.Kaunas.population}`);
+console.log(`you can visit  ${city_info.Kaunas.visitPlaces}`);
+/* kaunas is in lithuania 
+the population is 2893...
+you can visit rando jun the zoo  paa*/
