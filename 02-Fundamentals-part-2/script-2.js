@@ -339,3 +339,66 @@ if (markProfile.Bmi > johnProfile.Bmi) {
     `${johnProfile.fullName}'s BMI (${johnProfile.Bmi}) is higher than ${markProfile.fullName} BMI (${johnProfile.Bmi})`
   );
 }
+
+// FOR LOOPS
+const kennethArray = [
+  `kenneth`,
+  `junior`,
+  2037 - 1997,
+  `teacher`,
+  [`micheal`, `silas`, `favour`],
+];
+const types = [];
+for (i = 0; i < kennethArray.length; i++) {
+  console.log(kennethArray[i]);
+
+  //filling types array
+  // types[i] = typeof kennethArray[i];
+  types.push(typeof kennethArray[i]);
+}
+console.log(types);
+const year = [1991, 2007, 1969, 2020];
+let howOld = [];
+for (i = 0; i < year.length; i++) {
+  howOld.push(2037 - year[i]);
+}
+console.log(howOld);
+
+//continue and break
+console.log(`---- CONTINUE ----`);
+const array = [`bola`, 2, 4, 6, 8, `yusuf`];
+let num = [];
+let sum = 0;
+for (i = 0; i < array.length; i++) {
+  if (typeof array[i] === `string`) continue;
+  num.push(array[i]);
+  sum += num[i];
+}
+console.log(sum);
+console.log(num);
+console.log(`---- BREAK ----`);
+for (i = 0; i < array.length; i++) {
+  if (typeof array[i] === `number`) break;
+  console.log(array[i], typeof array[i]);
+}
+// LOOP BACKWARDS
+const obiArray = [
+  `kenneth`,
+  `junior`,
+  2037 - 1997,
+  `teacher`,
+  [`micheal`, `silas`, `favour`],
+];
+for (let i = obiArray.length - 1; i >= 0; i--) {
+  console.log(i, obiArray[i]);
+}
+//CREATING A LOOP INSIDE A LOOP
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+  console.log(`---------- Starting ${exercise}`);
+  for (let rep = 1; rep <= 5; rep++) {
+    console.log(`Exercise ${exercise} Lifting weight repetition`);
+  }
+}
+
+//WHILE LOOP
