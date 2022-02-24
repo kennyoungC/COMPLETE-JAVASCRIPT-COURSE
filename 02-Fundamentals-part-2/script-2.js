@@ -461,10 +461,10 @@ const calcAveraged = function (arr) {
   let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     sum = sum + arr[i];
-    avg = sum / arr.length;
   }
-  console.log(sum);
-  return avg;
+  return sum / arr.length;
+  // console.log(sum);
+  // return avg;
 };
 console.log(calcAveraged(totals));
 
@@ -493,3 +493,66 @@ console.log(`you can visit  ${city_info.Kaunas.visitPlaces}`);
 /* kaunas is in lithuania 
 the population is 2893...
 you can visit rando jun the zoo  paa*/
+
+//PROBLEM AND APPROACH ON HOW TO SOLVE
+//We work for a company building a smart home thermometer. Our most recent task is this: "Given an array of temperatures of one day, calculate the temperature amplitude. Keep in mind that sometimes there might be a sensor error"
+
+const temperatures = [3, -2, -6, -1, `error`, 9, 13, 17, 15, 14, 9, 5];
+
+// 1) Understanding the problem
+//- what is temp amplitutde? answer: Differnce between highest and lowest temp
+//- how to compute max and min temperatures?
+//- What's a sensor error? and what to do
+
+//2) Breaking up into sub-problems
+//- How to ignore errors?
+//-Find max value in temp array
+//-Find min value in temp array
+//-Substract the min from the max(amplitude) and return it
+
+const calcTempAmplitude = function (temps) {
+  let max = temps[0];
+  let min = temps[0];
+
+  for (let i = 0; i < temps.length; i++) {
+    const curTemp = temps[i];
+
+    if (typeof curTemp !== `number`) continue;
+
+    if (curTemp > max) max = curTemp;
+    if (curTemp < min) min = curTemp;
+  }
+  return max - min;
+};
+const amplitude = calcTempAmplitude(temperatures);
+console.log(amplitude);
+//PROBLEM 2
+//Function should now receive 2 arrays of temps
+
+//- With two arrays, should we implement functionality twice? NO! just merge two arrays
+
+//2) Breakin up into sub- problems
+// - how to merge 2 arrays
+
+const calcTempAmplitudeNew = function (t1, t2) {
+  let temps = t1.concat(t2);
+  console.log(temps);
+  let max = temps[0];
+  let min = temps[0];
+
+  for (let i = 0; i < temps.length; i++) {
+    const curTemp = temps[i];
+
+    if (typeof curTemp !== `number`) continue;
+
+    if (curTemp > max) max = curTemp;
+    if (curTemp < min) min = curTemp;
+  }
+  console.log(max, min);
+  return max - min;
+};
+const amplitudeNew = calcTempAmplitudeNew(
+  [3, 5, 7, 3, -2, 4],
+  [5, 3, 5, 7, 3, 1, -6]
+);
+console.log(amplitudeNew);
