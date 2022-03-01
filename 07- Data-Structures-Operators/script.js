@@ -96,3 +96,25 @@ console.log(o, c);
 // //DEFAUKT VALUES
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
+////////////////////////////////////
+
+//THE SPREAD OPERATOR...
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+console.log(1, 2, 7, 8, 9);
+
+const newMenu = [...restaurant.mainMenu, `Gnocci`];
+console.log(newMenu);
+
+//COPY ARRAY
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//JOIN 2 arrays
+const joinedMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(joinedMenu);
