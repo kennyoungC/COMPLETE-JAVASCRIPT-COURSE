@@ -14,6 +14,11 @@ const restaurant = {
   order: function (starterIndex, mainMenuIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainMenuIndex]];
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
   orderDelivery: function ({
     time = 1,
     address,
@@ -118,3 +123,30 @@ const mainMenuCopy = [...restaurant.mainMenu];
 //JOIN 2 arrays
 const joinedMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log(joinedMenu);
+/// Iterables are array, strings, maps, sets. NOT object
+//example of a string spread operator
+const str3 = `kenneth`;
+const letters = [...str3, ` `, `.S`];
+console.log(letters);
+///REAL WORLD EXAMPLE
+const ingredients = [
+  // prompt(`please type in your first ingredient`),
+  // prompt(`your second?`),
+  // prompt(`and your third`),
+];
+restaurant.orderPasta(...ingredients);
+
+//old way would have been:-
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+
+/////////////////////////
+//SINCE 2018 SPREAD OPERATOR WORKS ON OBJECT EVEN THOUGH THEY ARE NOT ITERABLE
+//OBJECT
+const newRestuarant = { foundedIn: 1991, ...restaurant, founder: `kenneth` };
+console.log(newRestuarant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = `chigozie obi`;
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
