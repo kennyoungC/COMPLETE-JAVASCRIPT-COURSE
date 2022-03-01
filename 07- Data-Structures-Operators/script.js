@@ -185,3 +185,21 @@ const t = [23, 5, 7];
 add(...t);
 
 restaurant.orderpizza(`spinach`, `onion`, `olives`, `mushroom`);
+
+/////////////////////////////////////////////
+console.log(`---------- OR ---------`);
+//USE any data type, return ANY data type, short-circuiting otherwise known as short-circuit evaluation
+console.log(3 || `jonas`);
+console.log(' ' || `kenneth`);
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || ` ` || `hello` || 23 || null);
+
+restaurant.numGuests = 23;
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1);
+
+const guest2 = restaurant.numGuests || 10;
+console.log(guest2);
+console.log(`---------- AND ---------`);
