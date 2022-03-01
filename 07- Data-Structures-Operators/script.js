@@ -29,6 +29,10 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderpizza: function (mainIng, ...others) {
+    console.log(mainIng);
+    console.log(others);
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -150,3 +154,34 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = `chigozie obi`;
 console.log(restaurant.name);
 console.log(restaurantCopy.name);
+
+///////////////////////////////////////////
+//SREAD, because on the RIGHT side of the = sign
+const arr5 = [1, 2, 3, ...[3, 4]];
+
+// REST, because on the LEFT side of the = sign
+const [k, m, ...others] = [1, 2, 5, 6, 7, 4];
+console.log(k, m, others);
+//REST on arrays
+const [pizza, , Risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  restaurant.starterMenu,
+];
+console.log(pizza, Risotto, otherFood);
+//REST on object
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+//REST on functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(2, 3, 4, 6, 7, 34, 7, 3);
+add(2, 3, 6, 3, 5, 7, 8, 5, 4, 3, 6);
+
+const t = [23, 5, 7];
+add(...t);
+
+restaurant.orderpizza(`spinach`, `onion`, `olives`, `mushroom`);
