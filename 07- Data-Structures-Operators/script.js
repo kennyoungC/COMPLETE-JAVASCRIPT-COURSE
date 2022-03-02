@@ -316,3 +316,67 @@ for (const item of menu2) console.log(item);
 for (const [i, el] of menu2.entries()) {
   console.log(`${i + 1}: ${el}`);
 }*/
+
+////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+//SETS
+const ordersSet = new Set([
+  `pizza`,
+  `pasta`,
+  `risotto`,
+  `pasta`,
+  `pizza`,
+  `pizza`,
+]);
+console.log(ordersSet);
+console.log(new Set(`jonas`));
+console.log(ordersSet.size);
+console.log(ordersSet.has(`pizza`));
+console.log(ordersSet.has(`bread`));
+ordersSet.add(`Garlic Bread`);
+ordersSet.add(`Garlic Bread`);
+// ordersSet.clear()
+ordersSet.delete(`risotto`);
+console.log(ordersSet);
+for (const order of ordersSet) {
+  console.log(order);
+}
+//EXAmPLE
+//also we also converted a set to an array using the spread operator
+const staff = [`waiter`, `chef`, `waiter`, `manager`, `chef`, `waiter`];
+console.log(new Set(staff).size);
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(new Set(`kennethchigozieobi`));
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+//MAP
+const rest = new Map();
+rest.set(`name`, `classico italiano`).set(1, `firenze italy`);
+console.log(rest.set(2, `lisbon, portugal`));
+rest
+  .set(`categories`, [`pizza`, `pasta`, `risotto`, `pasta`, `pizza`, `pizza`])
+  .set(`open`, 11)
+  .set(`close`, 23)
+  .set(true, `we are open :D`)
+  .set(false, `we are closed :(`);
+
+console.log(rest.get(`name`));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
+
+console.log(rest.has(`categories`));
+rest.delete(2);
+// rest.clear();
+const headder = document.querySelector(`h1`);
+console.log(headder);
+const arr = [1, 2];
+rest.set([arr], `test`);
+// rest.set(document.querySelector(`h1`), `heading`);
+console.log(rest);
+console.log(rest.size);
+console.log(rest.get(arr));
