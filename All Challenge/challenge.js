@@ -210,10 +210,16 @@ for (const [key, value] of gameEvents) {
   //   ? `[FIRST-HALF] ${value}`
   //   : `[SECOND-HALF] ${value}`;
   if (typeof key === `number` && key < 45) {
-    console.log(`[FIRST-HALF] ${value}`);
+    console.log(`[FIRST-HALF] ${key}' ${value}`);
   } else {
-    console.log(`[SECOND-HALF] ${value}`);
+    console.log(`[SECOND-HALF] ${key}' ${value}`);
   }
 }
-console.log(`An event happened, on
-average, every ${gameEvents.size} minutes`);
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
