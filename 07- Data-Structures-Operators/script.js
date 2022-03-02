@@ -372,11 +372,40 @@ console.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
 console.log(rest.has(`categories`));
 rest.delete(2);
 // rest.clear();
-const headder = document.querySelector(`h1`);
-console.log(headder);
 const arr = [1, 2];
 rest.set([arr], `test`);
-// rest.set(document.querySelector(`h1`), `heading`);
+rest.set(document.querySelector(`h1`), `heading`);
 console.log(rest);
 console.log(rest.size);
 console.log(rest.get(arr));
+
+//ANOTHER WAY CREATIN A NEW MAP IS:-
+const question = new Map([
+  [`question`, `what is the best programming language in the world?`],
+  [1, `C`],
+  [2, `Java`],
+  [3, `javaScript`],
+  [`correct`, 3],
+  [true, `correct 🎉`],
+  [false, `try again!`],
+]);
+console.log(question);
+//CONVERT OBJECT TO MAP
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+/////////////////////////////////////////////
+// quiz app
+/*
+console.log(question.get(`question`));
+for (const [key, value] of question) {
+  if (typeof key === `number`) console.log(`Answer ${key}: ${value}`);
+}
+const Answer = Number(prompt(`Your answer?`));
+console.log(Answer);
+console.log(question.get(question.get(`correct`) === Answer));*/
+///////////////////////////////////////////////////
+//CONVERT A MAP TO AN ARRAY
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
