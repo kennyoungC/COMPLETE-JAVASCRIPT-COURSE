@@ -49,6 +49,59 @@ const restaurant = {
     console.log(others);
   },
 };
+
+//////////////////////////////////////
+//Optional Chaining
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon);
+//WITH optionnal chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+for (const day of weekDays) {
+  const open = restaurant.openingHours[day]?.open ?? `closed`;
+  const close = restaurant.openingHours[day]?.close ?? `unavailable`;
+  console.log(`on ${day}, we are open at ${open} and close by ${close}`);
+}
+//ON methods
+console.log(restaurant.order?.(0, 1) ?? `method does not exist`);
+console.log(restaurant.orderRisotto?.(0, 1) ?? `method does not exist`);
+// ON arrays
+const user = [
+  {
+    name: `jonas`,
+    email: `hello@jonas.io`,
+  },
+];
+// const user = [];
+console.log(user[0]?.name ?? `user array empty`);
+//saves the stress of doing this:-
+if (user.length > 0) {
+  console.log(user[0].name);
+} else {
+  console.log(`user array empty`);
+}
+
+//////////////////////////
+//using FOR OF on objects
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are on open on ${properties.length} days:`;
+for (const day of properties) {
+  openStr += ` ${day}, `;
+}
+console.log(openStr);
+//PROPERTY VALUES
+const values = Object.values(openingHours);
+console.log(values);
+//ENTIRE OBJECT
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+//[key, value]
+for (const [day, { open, close }] of entries) {
+  console.log(`on ${day} we open at ${open} and close at ${close}`);
+}
 /*
 restaurant.orderDelivery({
   time: `22:30`,
@@ -104,7 +157,7 @@ console.log(o, c);
 // const [i, , [j, k]] = nested;
 // console.log(i, j, k);
 
-// //DEFAUKT VALUES
+// //DEFAUlT VALUES
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
 ////////////////////////////////////
