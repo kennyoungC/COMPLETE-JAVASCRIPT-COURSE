@@ -140,3 +140,4 @@ const planesInLine = function (n) {
 planesInLine(6);
 planesInLine(9);
 planesInLine(11);
+console.log(message2.indexOf(`a`, 1) + 1);
