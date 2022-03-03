@@ -440,3 +440,24 @@ window.onload = function () {
 // You can do it in 2 ways:
 // If you are presenting all questions together, just take all the radio buttons and check if the selected answer === correct_answer
 // If you are presenting one question at a time, just add one point or not to the user score if the selected answer === correct_answer
+
+/*
+Coding Challenge #2
+This is more of a thinking challenge than a coding challenge �
+Your tasks:
+1. Take the IIFE below and at the end of the function, attach an event listener that
+changes the color of the selected h1 element ('header') to blue, each time
+the body element is clicked. Do not select the h1 element again!
+2. And now explain to yourself (or someone around you) why this worked! Take all
+the time you need. Think about when exactly the callback function is executed,
+and what that means for the variables involved in this example.
+*/
+
+(function () {
+  const header = document.querySelector("h1");
+  header.style.color = "red";
+
+  document.querySelector(`body`).addEventListener(`click`, function () {
+    header.style.color = `blue`;
+  });
+})();
