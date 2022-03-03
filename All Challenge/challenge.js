@@ -461,7 +461,7 @@ and what that means for the variables involved in this example.
     header.style.color = `blue`;
   });
 })();
-Coding Challenge #1
+/*Coding Challenge #1
 Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners
 about their dog's age, and stored the data into an array (one array for each). For
 now, they are just interested in knowing whether a dog is an adult or a puppy.
@@ -484,4 +484,24 @@ Test data:
 § Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 § Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 Hints: Use tools from all lectures in this section so far �
-GOOD LUCK �
+GOOD LUCK �*/
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  //his own method
+  //firstly he created a clone
+  // const dogsJuliaCorrected = dogsJulia.slice();
+  //secondly he deleted the required elements permantly from the clone using the splice method
+  // dogsJuliaCorrected.splice(0, 1);
+  // dogsJuliaCorrected.splice(-2);
+  // and lastly he added them together using the concat method
+  // const dogs = dogsJuliaCorrected.concat(dogsKate)
+
+  const shallowCopy = [...dogsJulia];
+  const correct = [...shallowCopy.slice(1, -2), ...dogsKate];
+  correct.forEach(function (val, i) {
+    val >= 3
+      ? console.log(`Dog number ${i + 1} is an adult, and is ${val} years old`)
+      : console.log(`Dog number ${i + 1} is still a puppy`);
+  });
+};
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
