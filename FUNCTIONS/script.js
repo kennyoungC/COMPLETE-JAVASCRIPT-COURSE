@@ -243,3 +243,30 @@ document
 poll.displayResults.call({ answer: [5, 2, 3] });
 
 /////////////////////////
+//IIFE
+(function () {
+  console.log(`This will never run again`);
+})();
+
+(() => console.log(`This will ALSO never run again`))();
+
+{
+  const isPrivate = 23;
+  var notPrivate = 12;
+}
+
+//////////////////////////////////////////////
+//CLOSURE
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
