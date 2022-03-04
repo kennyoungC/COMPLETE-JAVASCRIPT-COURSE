@@ -419,12 +419,13 @@ var questions = [
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
-const questionBox = document.querySelector(`.questions`);
-for (const list of questions) {
-  questionBox.innerText = list.question;
-  console.log(list.question);
-}
 
+const questionContainer = document.querySelectorAll(`.questions`);
+for (const [i, cont] of questionContainer.entries()) {
+  cont.textContent = questions[i].question;
+  console.log(cont);
+  // cont.textContent = questions[i].question;
+}
 //////////////////////////////////////////////
 window.onload = function () {
   // IF YOU ARE DISPLAYING ALL THE QUESTIONS AT ONCE:

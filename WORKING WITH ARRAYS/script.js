@@ -61,8 +61,66 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+const displayMovements = function (movement) {
+  containerMovements.innerHTML = ``;
+  movement.forEach(function (mov, i) {
+    const type = mov > 0 ? `deposit` : `withdrawal`;
+    const html = `
+          <div class="movements__row">
+            <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type} </div>
+            <div class="movements__value">${mov}</div>
+          </div>`;
+
+    containerMovements.insertAdjacentHTML(`afterbegin`, html);
+  });
+};
+displayMovements(account1.movements);
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(` `)
+      .map((name) => name[0])
+      .join(``);
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/// FILTER
+const deposit = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposit);
+const withdrawals = movements.filter((mov) => mov < 0);
+console.log(withdrawals);
+// ///MAP
+const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// });
+const movementsUSD = movements.map((mov) => mov * eurToUsd);
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * eurToUsd);
+}
+console.log(movementsUSDfor);
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? `Deposited` : `Withdrew`} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
+/*
 // LECTURES
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -157,3 +215,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
+*/
