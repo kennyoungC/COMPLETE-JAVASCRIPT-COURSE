@@ -77,6 +77,13 @@ const displayMovements = function (movement) {
   });
 };
 displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -87,10 +94,21 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
-console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// REDUCE
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+
+console.log(balance);
+const maximumNumber = movements.reduce(function (acc, mov) {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(maximumNumber);
 /// FILTER
 const deposit = movements.filter(function (mov) {
   return mov > 0;
