@@ -453,3 +453,173 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+///////////////////////////////////////////////////////////////
+// More way of creating and filling arrays
+const arr4 = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+// console.log(x.map() => 5)
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
+
+arr4.fill(23, 2, 6);
+console.log(arr4);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+const w = Array.from({ length: 100 }, (_, i) => i + 1);
+console.log(w);
+
+labelBalance.addEventListener(`click`, function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll(`.movements__value`),
+    (el) => Number(el.textContent.replace(`€`, ``))
+  );
+  console.log(movementsUI);
+  const movementsUI2 = [...document.querySelectorAll(`.movements__value`)];
+});
+
+////////////////////////
+// ARRAY METHOD PRACTICE
+//1.
+const bankDepositSum = accounts
+  .flatMap((acc) => acc.movements)
+  // .filter((mov) => mov > 0)
+  .reduce((sum, cur) => (cur > 0 ? sum + cur : sum), 0);
+
+console.log(bankDepositSum);
+//2.
+const numDeposits100 = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((mov) => mov >= 1000).length;
+console.log(numDeposits100);
+//alternatively
+const numDeposits1000 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposits1000);
+
+//prefixed ++ operator
+let a = 10;
+console.log(++a);
+console.log(a);
+//3.
+const sum = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? sum.deposits += cur : sum.withdrawals += cur
+      sums[cur > 0 ? `Deposits` : `Withdrawals`] += cur;
+      return sums;
+    },
+    { Deposits: 0, Withdrawals: 0 }
+  );
+
+const { Deposits, Withdrawals } = sum;
+console.log(sum);
+console.log(Deposits, Withdrawals);
+//4.
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = [`a`, `an`, `and`, `the`, `but`, `or`, `on`, `in`, `with`];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(` `)
+    .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(` `);
+  console.log(titleCase);
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase(`this is a nice title`));
+console.log(convertTitleCase(`this iS A LONG but not too Long`));
+console.log(convertTitleCase(`and here is another TITLE with an EXAMPLE`));
+
+////////////////////////////////////////////////////////////////////////////////
+//WHICH ARRAY METHOD TO USE AND WHEN
+//////////////
+/*
+TO MUTATE ORIGINAL ARRAY, methods:-
+ADD TO ORIGINAL:
+  .push  (end)
+  .unshift  (start)
+
+REMOVE FROM ORIGINAL:
+  .pop  (end)
+  .shift  (start)
+  .splice (any)
+
+OTHERS
+  .reverse
+  .sort
+  .fill
+*/
+//////////////
+/*
+A NEW ARRAY, methods:-
+A NEW ARRAY:
+COMPUTED FROM ORIGINAL:
+  .map  (loop)
+FILTERED USING CONDINTION:
+  .filter
+PORTION OF ORIGINAL:
+  .slice
+ADDING ORIGINAL TO OTHER:
+  .concat
+FLATTENING THE ORIGINAL:
+  .flat
+  .flatMap
+*/
+//////////////
+/*
+AN ARRAY INDEX, methods:-
+BASED ON VALUE:
+  .indexOf
+BASED TEST CONDITION
+  .findIndex
+*/
+//////////////
+/*
+AN ARRAY ELEMENT, method:-
+BASED ON TEST CONDITION:
+  .find
+*/
+//////////////
+/*
+KNOW IF ARRAY INCLUDES, methods:-
+BASED ON VALUE:
+  .includes
+BASED TEST CONDITION
+  .some
+  .every
+*/
+//////////////
+/*
+A NEW STRING, method:-
+BASED ON SEPERATOR STRING:
+  .join
+*/
+//////////////
+/*
+TO TRANSFORM TO (SINGLE)VALUE, method:-
+BASED ON ACCUMULATOR
+  .reduce (boil down array to single value of any type)
+*/
+//////////////
+/*
+TO JUST LOOP OVER AN ARRAY, method:-
+BASED ON CALLBACK:
+  forEach (Does not create a new array, just loops over it)
+*/
