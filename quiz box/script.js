@@ -111,7 +111,7 @@ var questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True", `False`],
   },
   {
     category: "Science: Computers",
@@ -120,7 +120,7 @@ var questions = [
     question:
       "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
+    incorrect_answers: ["Python", "C", "Java", "Jakarta"],
   },
 ];
 
@@ -148,30 +148,11 @@ window.onload = function () {
 //     answer: 1,
 //   },
 // ];
-const questionContainer = document.querySelector(`.question-Container`);
-for (const [i, val] of questions.entries()) {
-  const question = questions[i].question;
+// const questionContainer = document.querySelector(`.question-Container`);
+// for (const [i, val] of questions.entries()) {
+//   const question = questions[i].question;
 
-  const option = questions[i].incorrect_answers;
-  for (const opt of option) {
-    console.log(option);
-    let radioEle = document.querySelector(`input[type="radio"]`);
-    questionContainer.append(radioEle);
-  }
-  const html = `<div class="questionBox">
-                      <h2>questions ${i + 1}</h2>
-                         <p>${question}</p>
-                  </div>`;
-
-  questionContainer.insertAdjacentHTML("beforebegin", html);
-}
-
-// for (let i = 0; i < questions.length; i++) {
-//   let question = questions[i].question;
-//   document.write(question);
-//   let options = questions[i].incorrect_answers;
-//   document.body.appendChild(document.createElement("br"));
-//   let name = "radio" + i;
+//   const options = questions[i].incorrect_answers;
 //   for (let opt in options) {
 //     let radioEle = document.createElement("input");
 //     radioEle.type = "radio";
@@ -180,12 +161,37 @@ for (const [i, val] of questions.entries()) {
 //     document.body.appendChild(radioEle);
 //     let label = document.createElement("Label");
 //     label.innerHTML = options[opt];
-//     document.body.appendChild(label);
-//     document.body.appendChild(document.createElement("br"));
+//     questionContainer.appendChild(label);
+//     questionContainer.appendChild(document.createElement("br"));
 //   }
+//   const html = `<div class="questionBox">
+//                       <h2>questions ${i + 1}</h2>
+//                          <p>${question}</p>
+//                   </div>`;
 
-//   document.body.appendChild(document.createElement("br"));
+//   questionContainer.insertAdjacentHTML("beforebegin", html);
 // }
+
+for (let i = 0; i < questions.length; i++) {
+  let question = questions[i].question;
+  document.write(question);
+  let options = questions[i].incorrect_answers;
+  document.body.appendChild(document.createElement("br"));
+  let name = "radio" + i;
+  for (let opt in options) {
+    let radioEle = document.createElement("input");
+    radioEle.type = "radio";
+    radioEle.value = options[opt];
+    radioEle.name = name;
+    document.body.appendChild(radioEle);
+    let label = document.createElement("Label");
+    label.innerHTML = options[opt];
+    document.body.appendChild(label);
+    document.body.appendChild(document.createElement("br"));
+  }
+
+  document.body.appendChild(document.createElement("br"));
+}
 // var container = document.getElementById("container");
 // for (var i = 0; i < questions.length; i++) {
 //   var questionBox = document.querySelector(`.questionBox`);
