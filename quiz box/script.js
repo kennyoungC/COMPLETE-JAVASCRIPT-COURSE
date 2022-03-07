@@ -111,7 +111,7 @@ var questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True", `False`],
+    incorrect_answers: ["True"],
   },
   {
     category: "Science: Computers",
@@ -120,10 +120,16 @@ var questions = [
     question:
       "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Java", "Jakarta"],
+    incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
-
+const allOptions = questions.map((quest, mov) =>
+  (quest.allOptions = quest.incorrect_answers.concat(
+    quest.correct_answer
+  )).sort(() => Math.random() - 0.5)
+);
+console.log(allOptions);
+console.log(questions);
 //////////////////////////////////////////////
 window.onload = function () {
   // IF YOU ARE DISPLAYING ALL THE QUESTIONS AT ONCE:
@@ -175,7 +181,7 @@ window.onload = function () {
 for (let i = 0; i < questions.length; i++) {
   let question = questions[i].question;
   document.write(question);
-  let options = questions[i].incorrect_answers;
+  let options = questions[i].allOptions;
   document.body.appendChild(document.createElement("br"));
   let name = "radio" + i;
   for (let opt in options) {
