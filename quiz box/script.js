@@ -183,15 +183,17 @@ for (let i = 0; i < questions.length; i++) {
   document.write(question);
   let options = questions[i].allOptions;
   document.body.appendChild(document.createElement("br"));
-  let name = "radio" + i;
-  console.log(name);
+  let id = "radio" + i;
+  // console.log(named);
   for (let opt in options) {
     radioEle = document.createElement("input");
     radioEle.type = "radio";
     radioEle.value = options[opt];
-    radioEle.name = name;
+    console.log(radioEle.value);
+    radioEle.name = `options`;
+    radioEle.id = id;
     document.body.appendChild(radioEle);
-    console.log(radioEle);
+    // console.log(radioEle);
     let label = document.createElement("Label");
     label.innerHTML = options[opt];
     document.body.appendChild(label);
@@ -213,12 +215,15 @@ let findSelected = () => {
 findSelected();
 btn.addEventListener(`click`, function (e) {
   e.preventDefault();
-  let radios = document.querySelectorAll('input[type="radio"]:checked');
-  const checked = radios.some((c) => c.checked);
+  // let radios = document.querySelectorAll('input[type="radio"]:checked');
+  const checked = [...document.getElementsByName("options")].some(
+    (c) => c.checked
+  );
+
   console.log(checked);
   const correctAnswer = questions.map((el) => el.correct_answer);
   console.log(correctAnswer);
-  console.log(radios);
+  // console.log(radios);
 });
 // var container = document.getElementById("container");
 // for (var i = 0; i < questions.length; i++) {
