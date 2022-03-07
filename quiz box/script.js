@@ -177,27 +177,49 @@ window.onload = function () {
 
 //   questionContainer.insertAdjacentHTML("beforebegin", html);
 // }
-
+let radioBtns;
 for (let i = 0; i < questions.length; i++) {
   let question = questions[i].question;
   document.write(question);
   let options = questions[i].allOptions;
   document.body.appendChild(document.createElement("br"));
   let name = "radio" + i;
+  console.log(name);
   for (let opt in options) {
-    let radioEle = document.createElement("input");
+    radioEle = document.createElement("input");
     radioEle.type = "radio";
     radioEle.value = options[opt];
     radioEle.name = name;
     document.body.appendChild(radioEle);
+    console.log(radioEle);
     let label = document.createElement("Label");
     label.innerHTML = options[opt];
     document.body.appendChild(label);
     document.body.appendChild(document.createElement("br"));
   }
-
   document.body.appendChild(document.createElement("br"));
 }
+
+let para = document.createElement(`p`);
+para.textContent = `Your score is 5/10`;
+document.body.appendChild(para);
+let btn = document.createElement(`button`);
+btn.textContent = `click here for result`;
+document.body.appendChild(btn);
+let findSelected = () => {
+  let selected = document.querySelector("input[type=radio]:checked");
+  console.log(selected);
+};
+findSelected();
+btn.addEventListener(`click`, function (e) {
+  e.preventDefault();
+  let radios = document.querySelectorAll('input[type="radio"]:checked');
+  const checked = radios.some((c) => c.checked);
+  console.log(checked);
+  const correctAnswer = questions.map((el) => el.correct_answer);
+  console.log(correctAnswer);
+  console.log(radios);
+});
 // var container = document.getElementById("container");
 // for (var i = 0; i < questions.length; i++) {
 //   var questionBox = document.querySelector(`.questionBox`);
