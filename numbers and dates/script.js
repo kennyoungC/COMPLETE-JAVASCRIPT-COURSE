@@ -355,3 +355,48 @@ labelBalance.addEventListener(`click`, function () {
     if (i % 3 === 0) row.style.backgroundColor = `blue`;
   });
 });
+// Numeric Seperator
+// 287,460,000,000
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const price = 345_99;
+console.log(price);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.1415;
+console.log(PI);
+
+console.log(Number(`230_000`)); // NaN
+console.log(parseInt(`230_000`));
+//  BigInt
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+console.log(4411455448411221212225645541511515112n);
+console.log(BigInt(4455211212));
+
+// operations
+console.log(10000n + 10000n);
+console.log(5215453353525354359652525682n * 10000000n);
+// console.log(Math.sqrt(16n))
+
+const huge = 8451844514969586295659n;
+const num = 23;
+console(huge * BigInt(num));
+// Execeptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == `20`);
+
+console.log(huge + `is REALLY big!!!`);
+
+// Division
+console.log(11n / 3n);
+console.log(11 / 3);
