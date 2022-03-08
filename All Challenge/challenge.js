@@ -296,6 +296,44 @@ const parseArray = (arr) => {
 };
 console.log(parseArray(arr));
 
+// CODEWAR CHALLENGES
+function digital_root(n) {
+  const newArr = String(n)
+    .split(``)
+    .map(function (item) {
+      return parseInt(item, 10);
+    })
+    .reduce((acc, mov) => acc + mov, 0);
+  console.log(newArr);
+
+  if (newArr >= 10) {
+    const arr = String(newArr)
+      .split(``)
+      .map((item) => parseInt(item, 10))
+      .reduce((acc, mov) => acc + mov, 0);
+    if (arr > 9) {
+      return String(arr)
+        .split(``)
+        .map((item) => parseInt(item, 10))
+        .reduce((acc, mov) => acc + mov, 0);
+    } else {
+      return arr;
+    }
+  } else {
+    return newArr;
+  }
+}
+console.log(digital_root(16));
+// 7;
+console.log(digital_root(456));
+// 6;
+console.log(digital_root(942));
+// 6;
+console.log(digital_root(132189));
+// 6;
+console.log(digital_root(493193));
+// 11;
+
 // HOW TO calculate the result
 // You can do it in 2 ways:
 // If you are presenting all questions together, just take all the radio buttons and check if the selected answer === correct_answer
