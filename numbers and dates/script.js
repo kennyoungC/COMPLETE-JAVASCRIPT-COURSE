@@ -290,3 +290,45 @@ console.log(Number.isFinite(23 / 0));
 console.log(Number.isInteger(23));
 console.log(Number.isInteger(23.0));
 console.log(Number.isInteger(23 / 0));
+
+//
+// console.log(Math.sqrt(25));
+// console.log(25 ** (1 / 2));
+// console.log(8 ** (1 / 3));
+
+function digital_root(n) {
+  const newArr = String(n)
+    .split(``)
+    .map(function (item) {
+      return parseInt(item, 10);
+    })
+    .reduce((acc, mov) => acc + mov, 0);
+  console.log(newArr);
+
+  if (newArr >= 10) {
+    const arr = String(newArr)
+      .split(``)
+      .map(item => parseInt(item, 10))
+      .reduce((acc, mov) => acc + mov, 0);
+    if (arr > 9) {
+      return String(arr)
+        .split(``)
+        .map(item => parseInt(item, 10))
+        .reduce((acc, mov) => acc + mov, 0);
+    } else {
+      return arr;
+    }
+  } else {
+    return newArr;
+  }
+}
+console.log(digital_root(16));
+// 7;
+console.log(digital_root(456));
+// 6;
+console.log(digital_root(942));
+// 6;
+console.log(digital_root(132189));
+// 6;
+console.log(digital_root(493193));
+// 11;
