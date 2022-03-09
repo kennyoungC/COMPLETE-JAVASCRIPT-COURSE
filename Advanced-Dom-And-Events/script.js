@@ -7,6 +7,8 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector(`.btn--scroll-to`);
+const section1 = document.getElementById(`section--1`);
 
 const openModal = function (e) {
   e.preventDefault();
@@ -31,10 +33,34 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-const btnScrollTo = document.querySelector(`.btn--scroll-to`);
-const section1 = document.getElementById(`section--1`);
+//////////////////////////////////////////
+// Button Smoth scrolling
 btnScrollTo.addEventListener(`click`, function () {
   section1.scrollIntoView({ behavior: `smooth` });
+});
+//////////////////////////////////////////
+
+// Page Navigation
+// document.querySelectorAll(`.nav__link`).forEach(function (el) {
+//   el.addEventListener(`click`, function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute(`href`);
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: `smooth` });
+//   });
+// });
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector(`.nav__links`).addEventListener(`click`, function (e) {
+  e.preventDefault();
+
+  // Matching strategy
+  if (e.target.classList.contains(`nav__link`)) {
+    const id = e.target.getAttribute(`href`);
+    document.querySelector(id).scrollIntoView({ behavior: `smooth` });
+  }
 });
 //////////////////////////////////////////
 /////////////////////////////////////////
@@ -116,7 +142,7 @@ logo.classList.toggle(`c`, `j`);
 logo.classList.contains(`c`, `j`);
 
 // Don't use this  it overwrites the initial class
-logo.className = `jonas`;*/
+logo.className = `jonas`;
 
 const h1 = document.querySelector(`h1`);
 const alertH1 = function (e) {
@@ -150,3 +176,4 @@ document.querySelector(`.nav`).addEventListener(`click`, function (e) {
   this.style.backgroundColor = randomColor();
   console.log(`NAV`, e.target, e.currentTarget);
 });
+*/
