@@ -189,8 +189,8 @@ for (let i = 0; i < questions.length; i++) {
     radioEle = document.createElement("input");
     radioEle.type = "radio";
     radioEle.value = options[opt];
+    radioEle.name = options;
     console.log(radioEle.value);
-    radioEle.name = `options`;
     radioEle.id = id;
     document.body.appendChild(radioEle);
     // console.log(radioEle);
@@ -200,8 +200,12 @@ for (let i = 0; i < questions.length; i++) {
     document.body.appendChild(document.createElement("br"));
   }
   document.body.appendChild(document.createElement("br"));
+  var getSelectedValue = document.querySelector(
+    'input[name="options"]:checked'
+  );
+  if (questions[i].correct_answer === getSelectedValue)
+    console.log(getSelectedValue);
 }
-
 let para = document.createElement(`p`);
 para.textContent = `Your score is 5/10`;
 document.body.appendChild(para);
@@ -209,21 +213,28 @@ let btn = document.createElement(`button`);
 btn.textContent = `click here for result`;
 document.body.appendChild(btn);
 let findSelected = () => {
-  let selected = document.querySelector("input[type=radio]:checked");
+  let selected = document.querySelector('input[name="options"]:checked');
   console.log(selected);
 };
 findSelected();
 btn.addEventListener(`click`, function (e) {
   e.preventDefault();
-  // let radios = document.querySelectorAll('input[type="radio"]:checked');
-  const checked = [...document.getElementsByName("options")].some(
-    (c) => c.checked
-  );
+  var getSelectedValue = [
+    ...document.querySelectorAll('input[name="options"]:checked'),
+  ];
+  console.log(getSelectedValue);
+  // if (getSelectedValue != null) {
+  //   alert("Selected radio button values is: " + getSelectedValue.value);
+  // }
+  // // let radios = document.querySelectorAll('input[type="radio"]:checked');
+  // const checked = [...document.getElementsByName("options")].some(
+  //   (c) => c.checked
+  //   );
 
-  console.log(checked);
-  const correctAnswer = questions.map((el) => el.correct_answer);
-  console.log(correctAnswer);
-  // console.log(radios);
+  //   console.log(checked);
+  //   const correctAnswer = questions.map((el) => el.correct_answer);
+  //   console.log(correctAnswer);
+  //   // console.log(radios);
 });
 // var container = document.getElementById("container");
 // for (var i = 0; i < questions.length; i++) {
