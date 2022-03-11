@@ -127,7 +127,7 @@ const header = document.querySelector(`.header`);
 const navHeight = nav.getBoundingClientRect().height;
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add(`sticky`);
   else nav.classList.remove(`sticky`);
@@ -145,7 +145,7 @@ const allSections = document.querySelectorAll(`section`);
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
 
   if (!entry.isIntersecting) return;
 
@@ -186,22 +186,29 @@ const imgObserver = new IntersectionObserver(loadImg, {
 imgTarget.forEach(img => imgObserver.observe(img));
 
 /////////////////////////////////////////
+// Slides
+
 const slides = document.querySelectorAll(`.slide`);
-const btnLeft = document.querySelector(`slider__btn--left`);
-const btnRight = document.querySelector(`slider__btn--right`);
+const btnLeft = document.querySelector(`.slider__btn--left`);
+const btnRight = document.querySelector(`.slider__btn--right`);
+const slider = document.querySelector(`.slider`);
 
 let curSlide = 0;
 const maxSlide = slides.length;
 
+// slider.style.transform = `scale(0.4) translateX(-800px)`;
+// slider.style.overflow = `visible`;
+
 const goToSlide = function (slide) {
   slides.forEach(
-    (s, i) => (s.style.transform = `translate(${100 * (i - slide)}%)`)
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
   );
 };
-
+// slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+// 0%, 100%, 200%, 300%
 goToSlide(0);
 
-// Next slide
+//next slide
 const nextSlide = function () {
   if (curSlide === maxSlide - 1) {
     curSlide = 0;
@@ -211,15 +218,19 @@ const nextSlide = function () {
 
   goToSlide(curSlide);
 };
+// Prev Slide
 const prevSlide = function () {
   if (curSlide === 0) {
     curSlide = maxSlide - 1;
   } else {
     curSlide--;
   }
-
   goToSlide(curSlide);
 };
+
+btnRight.addEventListener(`click`, nextSlide);
+//curSlide = 1: -100%, 0%, 100%, 200%
+btnLeft.addEventListener(`click`, prevSlide);
 
 /*
 //Selecting Element
