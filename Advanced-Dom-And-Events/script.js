@@ -103,10 +103,9 @@ const handlerHover = function (e) {
     logo.style.opacity = this;
   }
 };
-
 // Passing "argument" into handler
-// nav.addEventListener(`mouseover`, handlerHover.bind(0.5));
-// nav.addEventListener(`mouseout `, handlerHover.bind(1));
+nav.addEventListener(`mouseover`, handlerHover.bind(0.5));
+nav.addEventListener(`mouseout`, handlerHover.bind(1));
 
 // // Implementing a sticky nav bar: Intersection Observer API
 // const obsCallback = function (entries, observer) {
@@ -338,6 +337,8 @@ console.log(logo.getAttribute(`designer`));
 logo.setAttribute(`Company`, `Bankist`);
 
 console.log(logo.src);
+
+
 console.log(logo.getAttribute(`src`));
 
 const link = document.querySelector(`.nav__link--btn`);
