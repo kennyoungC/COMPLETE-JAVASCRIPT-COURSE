@@ -150,11 +150,13 @@ for (let i = 0; i < questions.length; i++) {
   // console.log(named);
   for (let opt in options) {
     radioEle = document.createElement("input");
+
     radioEle.type = "radio";
     radioEle.value = options[opt];
     radioEle.name = "question_" + i;
     radioEle.id = id;
     document.body.appendChild(radioEle);
+
     // console.log(radioEle);
     let label = document.createElement("Label");
     label.innerHTML = options[opt];
@@ -163,6 +165,7 @@ for (let i = 0; i < questions.length; i++) {
   }
   document.body.appendChild(document.createElement("br"));
 }
+
 let para = document.createElement(`p`);
 para.textContent = ``;
 para.id = `result`;
@@ -191,75 +194,8 @@ btn.addEventListener(`click`, function (e) {
 
     console.log(correct);
   }
+
   console.log(correct_count);
   let para = document.getElementById(`result`);
   para.textContent = `Your score is ${correct_count}/${questions.length}`;
-  // var getSelectedValue = [
-  //   ...document.querySelectorAll('input[name="options"]:checked'),
-  // ];
-  // console.log(getSelectedValue);
-  // // if (getSelectedValue != null) {
-  //   alert("Selected radio button values is: " + getSelectedValue.value);
-  // }
-  // // let radios = document.querySelectorAll('input[type="radio"]:checked');
-  // const checked = [...document.getElementsByName("options")].some(
-  //   (c) => c.checked
-  //   );
-
-  //   console.log(checked);
-  //   const correctAnswer = questions.map((el) => el.correct_answer);
-  //   console.log(correctAnswer);
-  //   // console.log(radios);
 });
-// var container = document.getElementById("container");
-// for (var i = 0; i < questions.length; i++) {
-//   var questionBox = document.querySelector(`.questionBox`);
-//   questionBox.textContent = questions[i].quest;
-
-//   var options = questions[i].choices;
-//   for (var opt in options) {
-//     //create radiobutton
-//     const radioBtns = document.querySelectorAll("input[name ='option']");
-
-//     //append radiobutton to a div
-//     questionContainer.appendChild(radioBtns);
-//   }
-//   container.appendChild(questionContainer);
-// }
-
-// var questions = [
-//   {
-//     quest: "What is the capital of United Kingdom?",
-//     choices: ["Manchester", "Birmingham", "London", "Birmingham"],
-//     answer: 2,
-//   },
-
-//   {
-//     quest: "What is the capital of United States?",
-//     choices: ["California", "New York", "Miami", "Florida"],
-//     answer: 1,
-//   },
-// ];
-// const questionContainer = document.querySelector(`.question-Container`);
-// for (const [i, val] of questions.entries()) {
-//   const question = questions[i].question;
-
-//   const options = questions[i].incorrect_answers;
-//   for (let opt in options) {
-//     let radioEle = document.createElement("input");
-//     radioEle.type = "radio";
-//     radioEle.value = options[opt];
-//     radioEle.name = name;
-//     document.body.appendChild(radioEle);
-//     let label = document.createElement("Label");
-//     label.innerHTML = options[opt];
-//     questionContainer.appendChild(label);
-//     questionContainer.appendChild(document.createElement("br"));
-//   }
-//   const html = `<div class="questionBox">
-//                       <h2>questions ${i + 1}</h2>
-//                          <p>${question}</p>
-//                   </div>`;
-
-//   questionContainer.insertAdjacentHTML("beforebegin", html);
-// }
