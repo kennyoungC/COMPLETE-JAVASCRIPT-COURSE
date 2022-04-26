@@ -340,7 +340,47 @@ function moveZeros(arr) {
   let newArr = arr.filter((el) => el === 0)
   return firstArr.concat(newArr)
 }
-console.log(moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]))
+// console.log(moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]))
+// CODEWAR CHALLENGES
+const maxSequence = function (arr) {
+  let currentSum = 0
+  let maxSum = 0
+
+  if (arr.length === 0) {
+    return 0
+  }
+
+  arr.forEach((a) => {
+    currentSum = Math.max(a, currentSum + a)
+    console.log(currentSum)
+    console.log(a)
+    console.log("==============")
+    maxSum = Math.max(maxSum, currentSum)
+    console.log(maxSum)
+  })
+  return maxSum
+}
+// console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+// CODEWARS
+
+function spinWords(sentence) {
+  const sentenceArray = sentence.split(" ")
+  let result = ""
+  sentenceArray.map((str, i) => {
+    if (str.length >= 5) {
+      sentenceArray[i] = str.split("").reverse().join("")
+    } else {
+      sentenceArray[i] = str
+    }
+    result = sentenceArray.join(" ")
+  })
+  return result
+}
+console.log(spinWords("Ade is a footballer"))
+// CODE WAR
+var uniqueInOrder = function (iterable) {
+  //your code here - remember iterable can be a string or an array
+}
 // // HOW TO calculate the result
 // // You can do it in 2 ways:
 // // If you are presenting all questions together, just take all the radio buttons and check if the selected answer === correct_answer
