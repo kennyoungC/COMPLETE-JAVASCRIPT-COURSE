@@ -53,37 +53,55 @@ Array.prototype.unique = function () {
 }
 console.log(Array.prototype)
 console.log(arr.unique())
-
+console.log("---------coding challenge-------")
 //Coding challenge
 
-const Car = function (make, speed) {
-  ;(this.make = make), (this.speed = speed)
+// const Car = function (make, speed) {
+//   ;(this.make = make), (this.speed = speed)
+// }
+
+class Car {
+  constructor(make, speed) {
+    this.make = make
+    this.speed = speed
+  }
+
+  accelerate() {
+    this.speed += 10
+    console.log(`${this.make} is going at ${this.speed} kmh`)
+  }
+  brake() {
+    this.speed -= 10
+    console.log(`${this.make} is going at ${this.speed} kmh`)
+  }
+  get speedUS() {
+    return this.speed / 1.6
+  }
+  set speedUS(speed) {
+    this.speed = speed * 1.6
+  }
 }
 const car_1 = new Car("BMW", 120)
 console.log(car_1)
 const car_2 = new Car("Mercedes", 95)
 console.log(car_2)
-
-Car.prototype.accelerate = function () {
-  this.speed += 10
-  console.log(`${this.make} is going at ${this.speed} kmh`)
-}
-Car.prototype.brake = function () {
-  this.speed -= 10
-  console.log(`${this.make} is going at ${this.speed} kmh`)
-}
+// Car.prototype.accelerate = function () {
+//   this.speed += 10
+//   console.log(`${this.make} is going at ${this.speed} kmh`)
+// }
+// Car.prototype.brake = function () {
+//   this.speed -= 10
+//   console.log(`${this.make} is going at ${this.speed} kmh`)
+// }
 car_1.accelerate()
 car_1.accelerate()
 car_1.accelerate()
-car_1.brake()
-car_2.accelerate()
-car_2.accelerate()
-car_2.accelerate()
-car_2.brake()
-car_2.brake()
-car_2.brake()
-
+const ford = new Car("ford", 120)
+console.log(ford.speedUS)
 //ES6 Classes
+ford.speedUS = 50
+console.log(ford)
+
 // Modern way of using prototypes
 
 // class expression
@@ -95,7 +113,7 @@ class PersonCl {
     this.fullName = fullName
     this.birthYear = birthYear
   }
-
+  // instance methods
   // methods will be added to the .prototype property
   calcAge() {
     console.log(2037 - this.birthYear)
@@ -119,6 +137,11 @@ class PersonCl {
   }
   get fullName() {
     return this._fullName
+  }
+  // Static method
+  // works only on the cobstructor itself
+  static hey() {
+    console.log("hey there 👇")
   }
 }
 
@@ -154,3 +177,24 @@ console.log(account.latest)
 
 account.latest = 666
 console.log(account.movements)
+
+// Object.create
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear)
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName
+    this.birthYear = birthYear
+  },
+}
+const steven = Object.create(PersonProto)
+console.log(steven)
+steven.name = "steven"
+steven.birthYear = 2002
+steven.calcAge()
+
+const sarah = Object.create(PersonProto)
+sarah.init("sarah", 1967)
+sarah.calcAge()
