@@ -376,11 +376,25 @@ function spinWords(sentence) {
   })
   return result
 }
-console.log(spinWords("Ade is a footballer"))
+// console.log(spinWords("Ade is a footballer"))
 // CODE WAR
 var uniqueInOrder = function (iterable) {
   //your code here - remember iterable can be a string or an array
+  return [...iterable].filter((a, i) => a !== iterable[i - 1])
 }
+console.log(uniqueInOrder("AAAABBBCCDAABBB"))
+//Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+function encrypt(text, n) {
+  let odd = ""
+  let even = ""
+  for (let i = 0; i <= text.length; i++) {
+    if (i % 2 === 0) {
+      odd = s
+    }
+  }
+  return odd
+}
+console.log(encrypt("135024"))
 // // HOW TO calculate the result
 // // You can do it in 2 ways:
 // // If you are presenting all questions together, just take all the radio buttons and check if the selected answer === correct_answer
