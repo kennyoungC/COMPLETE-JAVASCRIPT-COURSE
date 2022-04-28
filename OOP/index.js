@@ -69,16 +69,19 @@ class Car {
   accelerate() {
     this.speed += 10
     console.log(`${this.make} is going at ${this.speed} kmh`)
+    return this
   }
   brake() {
     this.speed -= 10
     console.log(`${this.make} is going at ${this.speed} kmh`)
+    return this
   }
   get speedUS() {
     return this.speed / 1.6
   }
   set speedUS(speed) {
     this.speed = speed * 1.6
+    return this
   }
 }
 const car_1 = new Car("BMW", 120)
@@ -93,7 +96,6 @@ console.log(car_2)
 //   this.speed -= 10
 //   console.log(`${this.make} is going at ${this.speed} kmh`)
 // }
-car_1.accelerate()
 car_1.accelerate()
 car_1.accelerate()
 const ford = new Car("ford", 120)
@@ -198,3 +200,139 @@ steven.calcAge()
 const sarah = Object.create(PersonProto)
 sarah.init("sarah", 1967)
 sarah.calcAge()
+//OBJECT.CREATE INHERITANCE
+const StudentProto = Object.create(PersonProto)
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear)
+  this.course = course
+}
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and i study ${this.course}`)
+}
+const sam = Object.create(StudentProto)
+sam.init("jay", 2010, "Computer Science")
+sam.introduce()
+sam.calcAge()
+console.log(sam)
+// challenge 3
+
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed)
+//   this.charge = charge
+// }
+// // link the prototypes
+// EV.prototype = Object.create(Car.prototype)
+// CLASS INHERITANCE
+class EV extends Car {
+  #charge
+  constructor(make, speed, charge) {
+    // always need to happen first
+    super(make, speed)
+    this.#charge = charge
+  }
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo
+    return this
+  }
+  accelerate() {
+    this.speed += 20
+    this.#charge--
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }`
+    )
+    return this
+  }
+}
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo
+// }
+// EV.prototype.accelerate = function () {
+//   this.speed += 20
+//   this.charge--
+//   console.log(
+//     `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}`
+//   )
+// }
+const tesla = new EV("Tesla", 120, 23)
+tesla.chargeBattery(90)
+console.log(tesla)
+tesla.accelerate()
+tesla
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .brake()
+  .chargeBattery(50)
+  .accelerate()
+// MORE ABOUT CLASSES
+// 1) Pulblic fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+
+class Account {
+  //1) Public fields (instances)
+  locale = navigator.language
+  //2) Private fields (instances)
+  #movements = []
+  #pin
+  constructor(owner, currency, pin) {
+    this.owner = owner
+    this.currency = currency
+    //protected property
+    this.#pin = pin
+    // this._movements = []
+    // this.locale = navigator.language
+  }
+  //3) public method
+  // public interface
+  getMovements() {
+    return this.#movements
+  }
+
+  deposit(val) {
+    this.#movements.push(val)
+    return this
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+    return this
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val)
+      console.log("loan approved")
+      return this
+    }
+  }
+  static helper() {
+    console.log("helper")
+  }
+  // 4) private method
+  _approveLoan(val) {
+    return true
+  }
+}
+
+const acct1 = new Account("jonas", "EUR", 1111)
+// acct1.movements.push(250)
+// acct1.movements.push(-140)
+acct1.deposit(250)
+acct1.withdraw(140)
+acct1.requestLoan(1000)
+
+console.log(acct1.getMovements())
+console.log(acct1)
+// move now private, no longer accessible by public
+// console.log(acct1.#movements)
+// static method works on the class itself and not its instances
+Account.helper()
+
+// chaining
+acct1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000)
+console.log(acct1.getMovements())
